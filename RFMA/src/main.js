@@ -18,15 +18,13 @@ k.loadSprite("map", "./map.png");
 
 k.setBackground(k.Color.fromHex("#311047"));
 
-k.scene("main", () => {
+k.scene("main", async () => {
     const mapData = await (await fetch("./map.png")).json();
     const layers = mapData.layers;
-    const map = k.make([
-                        k.sprite("map"),
-                        k.pos(0),
-                        k.scale(scaleFactor)]);
+
+    const map = k.make([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
     const player = k.make([
-        k.sprite("spritesheet" { anime: "idle-down"}), 
+        k.sprite("spritesheet", {anime: "idle-down"}), 
         k.area({
             shape:new k.rect(k.vec2(0, 3), 10, 10),
         }),
@@ -39,6 +37,7 @@ k.scene("main", () => {
             direction: "down",
             isInDialogue: false,
         },
+        //Tag to check for collisions, used with on collide function
         "player",
     ]);
     
@@ -61,8 +60,9 @@ k.scene("main", () => {
                         () => (player.isInDialogue = false)
                         );
                     });
-                },
+                };
             }
 });
 
+//Specifies default scene
 k.go("main");
