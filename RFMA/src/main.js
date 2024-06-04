@@ -60,7 +60,7 @@ k.scene("main", async () => {
                         () => (player.isInDialogue = false)
                         );
                     });
-                };
+                }
             }
 });
 
