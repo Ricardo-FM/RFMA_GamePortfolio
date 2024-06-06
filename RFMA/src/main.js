@@ -1,16 +1,17 @@
 import { scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
+import { displayDialogue } from "./utils";
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
     slicex: 39,
     slicey: 31,
     anim: {
-        "idle-down": 936,
-        "walk-down": {from: 936, to: 939, loop: true, speed: 8},
-        "idle-side": 975,
-        "walk-side": { from: 975, to : 978, loop: true, speed: 8},
-        "idle-up": 1014,
-        "walk-up": { from: 1014, to : 1017, loop: true, speed: 8}
+        "idle-down": 948,
+        "walk-down": { from: 948, to: 951, loop: true, speed: 8 },
+        "idle-side": 987,
+        "walk-side": { from: 987, to: 990, loop: true, speed: 8 },
+        "idle-up": 1026,
+        "walk-up": { from: 1026, to: 1029, loop: true, speed: 8 },
     },
 });
 
@@ -41,7 +42,7 @@ k.scene("main", async () => {
         "player",
     ]);
     
-    for (const layers of layers)
+    for (const layers of layers) {
         if (layers.name == "boundaries")
             for (const boundary of layers.objects) {
                 map.add([
@@ -55,13 +56,14 @@ k.scene("main", async () => {
                 if (boundary.name) {
                     player.onCollide(boundary.name, () => {
                         player.isInDialogue = true;
-                        displayDialogue(
-                        dialogueData[boundary.name],
-                        () => (player.isInDialogue = false)
-                        );
+                        displayDialogue("TODO", () => (player.isInDialogue = false));
                     });
                 }
             }
+        continue;
+        }
+    if(layers.name)
+    }
 });
 
 //Specifies default scene
