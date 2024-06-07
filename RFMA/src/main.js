@@ -15,6 +15,7 @@ k.loadSprite("spritesheet", "./spritesheet.png", {
     },
 });
 
+
 k.loadSprite("map", "./map.png");
 
 k.setBackground(k.Color.fromHex("#311047"));
@@ -64,7 +65,8 @@ k.scene("main", async () => {
         }
     if(layers.name)
     }
+
 });
 
-//Specifies default scene
+//Specifies default  test 2
 k.go("main");
