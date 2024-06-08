@@ -30,6 +30,14 @@ export function displayDialogue(text, onDisplay) {
 
     //event lister for the click/close button
     closeBtn.addEventListener("click", onCloseBtnClick);
+}
 
+export function setCamScale(k) {
+    const resizeFactor = k.width() / k.height();
+    if (resizeFactor < 1) {
+        k.camScale(kvec2(1));
+        return;
+    }
 
+    k.camScaleamScale(kvec(1.5));
 }
